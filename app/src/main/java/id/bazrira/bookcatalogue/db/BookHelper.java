@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import static android.provider.BaseColumns._ID;
 import static id.bazrira.bookcatalogue.db.DatabaseContract.TABLE_NAME;
 
 public class BookHelper {
@@ -49,15 +50,15 @@ public class BookHelper {
                 null,
                 null,
                 null,
-                "CODE ASC");
+                _ID + " DESC");
     }
 
-    public Cursor queryById(String code) {
+    public Cursor queryById(String id) {
         return database.query(
                 DATABASE_TABLE,
                 null,
-                "CODE = ?",
-                new String[]{code},
+                _ID + " = ?",
+                new String[]{id},
                 null,
                 null,
                 null,
@@ -73,14 +74,14 @@ public class BookHelper {
         return database.update(
                 DATABASE_TABLE,
                 values,
-                "CODE = ?",
+                _ID + " = ?",
                 new String[]{id});
     }
 
     public int deleteById(String id) {
         return database.delete(
                 DATABASE_TABLE,
-                "CODE = ?",
+                _ID + " = ?",
                 new String[]{id});
     }
 }

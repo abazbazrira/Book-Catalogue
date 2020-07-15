@@ -4,21 +4,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Book implements Parcelable {
-    private int code;
+    private int id;
+    private String code;
     private String title;
     private String author;
 
-    public Book(int code, String title, String author) {
+    public Book(int id, String code, String title, String author) {
+        this.id = id;
         this.code = code;
         this.title = title;
         this.author = author;
     }
 
-    public int getCode() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -45,7 +55,8 @@ public class Book implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.code);
+        dest.writeInt(this.id);
+        dest.writeString(this.code);
         dest.writeString(this.title);
         dest.writeString(this.author);
     }
@@ -54,22 +65,22 @@ public class Book implements Parcelable {
     }
 
     private Book(Parcel in) {
-        this.code = in.readInt();
+        this.id = in.readInt();
+        this.code = in.readString();
         this.title = in.readString();
         this.author = in.readString();
     }
 
-    private static final Parcelable.Creator<Book> CREATOR =
-            new Parcelable.Creator<Book>() {
+    public static final Parcelable.Creator<Book> CREATOR = new Parcelable.Creator<Book>() {
 
-        @Override
-        public Book createFromParcel(Parcel source) {
-            return new Book(source);
-        }
+                @Override
+                public Book createFromParcel(Parcel source) {
+                    return new Book(source);
+                }
 
-        @Override
-        public Book[] newArray(int size) {
-            return new Book[size];
-        }
-    };
+                @Override
+                public Book[] newArray(int size) {
+                    return new Book[size];
+                }
+            };
 }

@@ -6,9 +6,9 @@ public class DatabaseContract {
 
     static String TABLE_NAME = "book";
 
-    static final class BookColumns implements BaseColumns {
-        static int CODE = Integer.parseInt("code");
-        static String TITLE = "title";
-        static String AUTHOR = "author";
+    public static final class BookColumns implements BaseColumns {
+        public static String CODE = "code";
+        public static String TITLE = "title";
+        public static String AUTHOR = "author";
     }
 }
