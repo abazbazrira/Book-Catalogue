@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">Book Catalogue</string>
+  <string name="pengarang">Pengarang</string>
+  <string name="judul_buku">Judul Buku</string>
+  <string name="kode_buku">Kode Buku</string>
+  <string name="input_data">INPUT DATA</string>
+</resources>
